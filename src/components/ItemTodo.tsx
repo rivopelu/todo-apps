@@ -26,7 +26,7 @@ export const ItemTodo = ({priority, title, dataCy, onClickDelete, onClickEdit, o
   }
   return (
     <Card className={"py-[26px] px-[28px] flex items-center justify-between shadow-md"}>
-      <div className={"flex items-center gap-6"} data-cy={"sort-selection"} >
+      <div className={"flex items-center gap-6"} data-cy={dataCy}>
         <input id="disabled-checkbox"
                data-cy={"todo-item-checkbox"}
                checked={data.is_active === 0}
