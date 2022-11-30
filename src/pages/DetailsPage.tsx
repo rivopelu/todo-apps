@@ -20,6 +20,7 @@ import { ITodoDetails } from "../Redux/Reducers";
 import { log } from "util";
 import { requestPatch, requestPost } from "../helper/fetchHelper";
 import { UrlConstants } from "../constants/urlConstants";
+import {Card} from "../components/Card";
 
 export interface IDataNewTodo {
   activity_group_id: number
@@ -63,6 +64,7 @@ export const DetailsPage = () => {
   const [valuePriorityEdit, setValuePriorityEdit] = useState<string>("");
   const [valuePrioritySubmit, setValuePrioritySubmit] = useState<string>("")
   const [isActiveSortId, setIsActiveSortId] = useState<string>("sort-latest")
+  const [isAlertSuccessDelete, setIsAlertSuccessDelete] = useState<boolean>(false);
   const [detailGroup, setDetailGroup] = useState<ITodoDetails>({
     todo_items: [],
     title: "",
@@ -129,7 +131,7 @@ export const DetailsPage = () => {
     {
       title: "Belum Selesai",
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
-      id: "sort-unfinished",
+      id: "sort-selection",
       onClick: () => {
         setIsActiveSortId("sort-selection")
         setList(sortUnFinished().reverse())
@@ -144,6 +146,7 @@ export const DetailsPage = () => {
   useEffect(() => {
     if (MainReducers.isSuccessFetch && MainReducers.actionIntiType === ActionInitType.DELETE_DETAIL_LIST_TODO) {
       dispatch(GetDetailTodoList(params.id ?? "") as never)
+      setIsAlertSuccessDelete(true)
       setOnOpenModalDelete(false)
       // eslint-disable-next-line no-mixed-operators
     } else if (MainReducers.isSuccessFetch && MainReducers.actionIntiType === ActionInitType.EDIT_TODOS_DATA || MainReducers.isSuccessFetch && MainReducers.actionIntiType === ActionInitType.CREATE_TODOS || MainReducers.isSuccessFetch && MainReducers.actionIntiType === ActionInitType.CHECKLIST_TODO) {
@@ -334,8 +337,25 @@ export const DetailsPage = () => {
         </div>
       }
     </div>
+  const customModalSuccessDelete =
+    <>
+      <Card dataCy={"modal-information"} className={"py-[20px] px-[30px] w-[490px] flex gap-2 items-center "}>
+        <SVG data-cy={"modal-information-icon"} src={ToMediaUrl(ASSETS_CONSTANTS.IC_INFO)}/>
+        <span data-cy="modal-information-title"
+              className={"text-sm font-bold text-[#111111]"}>item berhasil dihapus</span>
+      </Card>
+    </>
   return (
     <section className={"h-full "}>
+      <Modal
+        closeIconCy={""}
+        buttonOkeCy={""}
+        buttonCancelCy={""}
+        title={""}
+        dataCy={""}
+        show={isAlertSuccessDelete}
+        customModal={customModalSuccessDelete}
+        onClickOverlay={() => setIsAlertSuccessDelete(false)}/>
       <Modal
         closeIconCy={""}
         dataCy={'modal-delete'}
