@@ -107,35 +107,35 @@ export const DetailsPage = () => {
     {
       title: "Terbaru",
       icon: ASSETS_CONSTANTS.IC_SORT_LATEST,
-      id: "sort-selection-0",
+      id: "--0",
       onClick: () => sortLatest()
     },
     {
       title: "Terlama",
       icon: ASSETS_CONSTANTS.IC_SORT_OLDEST,
-      id: "sort-selection-1",
+      id: "--1",
       onClick: () => setOldest()
     },
     {
       title: "A-Z", icon: ASSETS_CONSTANTS.IC_SORT_AZ,
-      id: "sort-selection-2", onClick: () => {
+      id: "--2", onClick: () => {
         setList(sortAz())
         setIsActiveSortId("sort-az")
       }
     },
     {
       title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA,
-      id: "sort-selection-3", onClick: () => {
-        setIsActiveSortId("sort-selection-")
+      id: "--3", onClick: () => {
+        setIsActiveSortId("--")
         setList(sortAz().reverse())
       }
     },
     {
       title: "Belum Selesai",
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
-      id: "sort-selection-4",
+      id: "--4",
       onClick: () => {
-        setIsActiveSortId("sort-selection-")
+        setIsActiveSortId("--")
         setList(sortUnFinished().reverse())
       }
     },
@@ -429,7 +429,7 @@ export const DetailsPage = () => {
             list.map((item, i) => (
               <div key={i}>
                 <ItemTodo
-                  dataCy={"todo-item-" + i.toString()}
+                  dataCy={"todo-item"}
                   data={item}
                   onChangeChecklist={() => onChangeChecklist(item)}
                   onClickEdit={() => {

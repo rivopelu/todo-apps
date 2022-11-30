@@ -25,8 +25,8 @@ export const ItemTodo = ({priority, title, dataCy, onClickDelete, onClickEdit, o
     onChangeChecklist()
   }
   return (
-    <Card dataCy={dataCy} className={"py-[26px] px-[28px] flex items-center justify-between shadow-md"}>
-      <div className={"flex items-center gap-6"} >
+    <Card className={"py-[26px] px-[28px] flex items-center justify-between shadow-md"}>
+      <div className={"flex items-center gap-6"} data-cy={"sort-selection"} >
         <input id="disabled-checkbox"
                data-cy={"todo-item-checkbox"}
                checked={data.is_active === 0}
