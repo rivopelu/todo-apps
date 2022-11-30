@@ -322,7 +322,7 @@ export const DetailsPage = () => {
                 className={"py-[14px] w-full px-[22px] flex border cursor-pointer hover:bg-slate-100 duration-75 justify-between"}>
 
                 <div
-                  data-cy={data.id}
+                  data-cy={"sort-selection"}
                   className={"flex items-center gap-3"}>
                   <SVG src={ToMediaUrl(data.icon)}/>
                   <span>{data.title}</span>
