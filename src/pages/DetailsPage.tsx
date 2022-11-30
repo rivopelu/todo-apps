@@ -272,9 +272,9 @@ export const DetailsPage = () => {
 
   const bodyModal =
     <div className={"w-full flex flex-col items-center justify-center max-w-[365px]"}>
-      <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_WARNING_DELETE)} />
+      <SVG data-cy={"modal-delete-icon"} src={ToMediaUrl(ASSETS_CONSTANTS.IC_WARNING_DELETE)}/>
       <div className={"w-full text-center"}>
-        <h1>Apakah anda yakin menghapus item <strong>“{titleDelete}”?</strong></h1>
+        <h1 data-cy={"modal-delete-title"}>Apakah anda yakin menghapus item <strong>“{titleDelete}”?</strong></h1>
       </div>
     </div>
 
@@ -282,15 +282,19 @@ export const DetailsPage = () => {
   const bodyModalNew =
     <div className={"w-[830px] flex flex-col gap-4 px-10"}>
       <div className={"flex flex-col gap-2"}>
-        <label className={"text-xs font-bold text-black"} htmlFor={"input_item"}>NAMA LIST ITEM</label>
-        <input value={valueTitle} onChange={(e: any) => setValueTitle(e.target.value)} type="text" id={"input_item"}
-          placeholder={"Tambahkan nama list item"}
-          className={"border py-2 px-3 rounded-md focus:outline-primary"} />
+        <label data-cy={"modal-add-name-title"} className={"text-xs font-bold text-black"} htmlFor={"input_item"}>NAMA
+          LIST ITEM</label>
+        <input data-cy={"modal-add-name-input"} value={valueTitle} onChange={(e: any) => setValueTitle(e.target.value)}
+               type="text" id={"input_item"}
+               placeholder={"Tambahkan nama list item"}
+               className={"border py-2 px-3 rounded-md focus:outline-primary"}/>
       </div>
       <div>
-        <label className={"text-xs font-bold text-black"} htmlFor={"input_item"}>PRIORITY</label>
+        <label data-cy={"modal-add-priority-title"} className={"text-xs font-bold text-black"}
+               htmlFor={"input_item"}>PRIORITY</label>
         <div className={"w-[205px] mt-1"}>
-          <SelectCustoms setValuePrioritySubmit={setValuePrioritySubmit} setValuePriorityEdit={setValuePriorityEdit} valuePriority={valuePriority} setValuePriority={setValuePriority} />
+          <SelectCustoms setValuePrioritySubmit={setValuePrioritySubmit} setValuePriorityEdit={setValuePriorityEdit}
+                         valuePriority={valuePriority} setValuePriority={setValuePriority}/>
         </div>
       </div>
     </div>
@@ -298,13 +302,14 @@ export const DetailsPage = () => {
   const filter =
     <div className={"relative "}>
       <button
+        data-cy="todo-sort-button"
         onClick={() => setIsActiveMenuSort(!isActiveMenuSort)}
         className={"justify-center rounded-full h-[54px] w-[54px] flex items-center border border-slate-300  bg-[#E5E5E5] "}>
-        <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_ARROW_SORT)} />
+        <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_ARROW_SORT)}/>
       </button>
       {
         isActiveMenuSort &&
-        <div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"Sort"}>
+				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"Sort"}>
           {
             dataMenuSort.map((data) => (
               <div
@@ -332,6 +337,10 @@ export const DetailsPage = () => {
   return (
     <section className={"h-full "}>
       <Modal
+        closeIconCy={""}
+        dataCy={'delete-list-item'}
+        buttonCancelCy={"modal-delete-cancel-button"}
+        buttonOkeCy={"modal-delete-confirm-button"}
         show={openModalDelete}
         body={bodyModal}
         okBtnVariant={BtnVariant.RED}
@@ -339,6 +348,11 @@ export const DetailsPage = () => {
         onOke={OnOkeModal}
       />
       <Modal
+        disabledOkeBtn={valueTitle.length < 1 && true}
+        closeIconCy={"modal-add-close-button"}
+        buttonCancelCy={""}
+        buttonOkeCy={"modal-add-save-button"}
+        dataCy={"tambah-list-item"}
         title={"Tambah List Item"}
         titleClassName={"px-10 py-4"}
         footerClassName={"px-10 flex-row-reverse border-t"}
@@ -352,14 +366,15 @@ export const DetailsPage = () => {
       <MainContainer className={"mt-[40px] h-full"}>
         <div className={"flex items-center justify-between"}>
           <div className={"flex items-center"}>
-            <div className={"cursor-pointer"} onClick={() => navigate("/")}>
-              <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_BACK_BTN)} />
+            <div className={"cursor-pointer"} data-cy="todo-back-button" onClick={() => navigate("/")}>
+              <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_BACK_BTN)}/>
             </div>
             {
               !onEditTitle ?
-                <h1 onClick={clickEdit} className={"text-3xl font-bold "}>{value}</h1> :
+                <h1 data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}>{value}</h1> :
                 <form>
                   <input
+                    data-cy="todo-title"
                     autoFocus={true}
                     type="text"
                     onKeyDown={(e: any) => {
@@ -369,18 +384,19 @@ export const DetailsPage = () => {
                     }
                     }
                     className={"text-3xl font-bold bg-transparent  w-fit outline-0 border-b-2 border-black"}
-                    value={value} onChange={onChangeInput} onBlur={onUpdateTitle} />
+                    value={value} onChange={onChangeInput} onBlur={onUpdateTitle}/>
                 </form>
             }
             <button className={"ml-4 "} onClick={clickEdit}>
-              <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_PENCIL)} />
+              <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_PENCIL)}/>
             </button>
           </div>
           <div className={"flex items-center justify-between gap-2"}>
             {filter}
-            <Button className={"flex items-center gap-2 duration-200 px-10"} onClick={onClickNewTodo}>
+            <Button dataCy={"todo-add-button"} className={"flex items-center gap-2 duration-200 px-10"}
+                    onClick={onClickNewTodo}>
               <>
-                <FontAwesomeIcon icon={faPlus} />
+                <FontAwesomeIcon icon={faPlus}/>
                 <span>Tambah</span>
               </>
             </Button>
@@ -392,6 +408,7 @@ export const DetailsPage = () => {
             list.map((item, i) => (
               <div key={i}>
                 <ItemTodo
+                  dataCy={"todo-item-" + i.toString()}
                   data={item}
                   onChangeChecklist={() => onChangeChecklist(item)}
                   onClickEdit={() => {

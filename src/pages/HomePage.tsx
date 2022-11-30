@@ -57,7 +57,7 @@ export const HomePage = () => {
     dispatch(GetListActivityGroup() as never);
   }, [])
 
-  const onDeleteClick = (id ?: number, title ?: string) => {
+  const onDeleteClick = (id?: number, title?: string) => {
     setOpenModalDelete(true);
     setTitleDelete(title)
     setIdDelete(id)
@@ -78,9 +78,9 @@ export const HomePage = () => {
   }
   const bodyModal =
     <div className={"w-full flex flex-col items-center justify-center max-w-[365px]"}>
-      <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_WARNING_DELETE)}/>
+      <SVG data-cy={"modal-delete-icon"} src={ToMediaUrl(ASSETS_CONSTANTS.IC_WARNING_DELETE)}/>
       <div className={"w-full text-center"}>
-        <h1>Apakah anda yakin menghapus activity <strong>“{titleDelete}”?</strong></h1>
+        <h1 data-cy={"modal-delete-title"}>Apakah anda yakin menghapus activity <strong>“{titleDelete}”?</strong></h1>
       </div>
     </div>
 
@@ -88,8 +88,9 @@ export const HomePage = () => {
   const customModalSuccessDelete =
     <>
       <Card className={"py-[20px] px-[30px] w-[490px] flex gap-2 items-center "}>
-        <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_INFO)}/>
-        <span className={"text-sm font-bold text-[#111111]"}>Activity berhasil dihapus</span>
+        <SVG data-cy={"modal-information-icon"} src={ToMediaUrl(ASSETS_CONSTANTS.IC_INFO)}/>
+        <span data-cy="modal-information-title"
+              className={"text-sm font-bold text-[#111111]"}>Activity berhasil dihapus</span>
       </Card>
     </>
 
@@ -99,8 +100,20 @@ export const HomePage = () => {
 
   return (
     <div className={"h-full"}>
-      <Modal show={isAlertSuccessDelete} customModal={customModalSuccessDelete} onClickOverlay={onClickOverlay}/>
       <Modal
+        closeIconCy={""}
+        buttonOkeCy={""}
+        buttonCancelCy={""}
+        title={""}
+        dataCy={"alert-activity"}
+        show={isAlertSuccessDelete}
+        customModal={customModalSuccessDelete}
+        onClickOverlay={onClickOverlay}/>
+      <Modal
+        dataCy={"delete-activity"}
+        closeIconCy={""}
+        buttonOkeCy={"modal-delete-confirm-button"}
+        buttonCancelCy={"modal-delete-cancel-button"}
         show={openModalDelete}
         body={bodyModal}
         okBtnVariant={BtnVariant.RED}
@@ -110,8 +123,9 @@ export const HomePage = () => {
 
       <MainContainer className={"mt-[40px] h-full"}>
         <div className={"flex w-full items-center justify-between"}>
-          <h1 className={"text-3xl font-extrabold"}>Activity</h1>
-          <Button className={"flex items-center gap-2 duration-200"} onClick={onClickNewItem}>
+          <h1 data-cy="activity-title" className={"text-3xl font-extrabold"}>Activity</h1>
+          <Button dataCy="activity-add-button" className={"flex items-center gap-2 duration-200"}
+                  onClick={onClickNewItem}>
             <>
               {
                 isLoadingAddNew ?
@@ -129,7 +143,7 @@ export const HomePage = () => {
                 {
                   dataList.map((item, i) => (
                       <div key={i} className={"w-[25%] pt-5"}>
-                        <ItemCard onClick={() => navigate("/detail/" + item.id)}
+                        <ItemCard dataCy={`activity-item-${i}`} onClick={() => navigate("/detail/" + item.id)}
                                   onClickDelete={() => onDeleteClick(item.id, item.title)} title={item.title}
                                   date={toDateString(item.created_at ?? "")}/>
                       </div>
@@ -138,7 +152,7 @@ export const HomePage = () => {
                 }
               </div> :
               <div className={"h-full items-center w-full justify-center  flex mt-28"}>
-                <img src={ToMediaUrl(ASSETS_CONSTANTS.EMPTY_STATE)} alt="empty state"/>
+                <SVG data-cy="activity-empty-state" src={ToMediaUrl(ASSETS_CONSTANTS.EMPTY_STATE)}/>
               </div>
           }
         </div>

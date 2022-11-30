@@ -2,11 +2,12 @@ import React from 'react';
 
 interface ICard {
   className?: string,
-  children: any
+  children: any,
+  dataCy ?: string
 }
 
-export const Card = ({children, className}: ICard) => {
+export const Card = ({children, className, dataCy}: ICard) => {
   return (
-    <div className={`bg-white  rounded-md  ${className}`}>{children}</div>
+    <div data-cy={dataCy} className={`bg-white  rounded-md  ${className}`}>{children}</div>
   )
 }

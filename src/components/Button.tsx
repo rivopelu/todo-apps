@@ -10,9 +10,10 @@ interface IBtn {
   onClick?: any,
   type?: 'submit' | 'reset' | 'button' | undefined;
   variant?: BtnVariant
+  dataCy : string
 }
 
-export const Button = ({children, className, onClick, type, variant}: IBtn) => {
+export const Button = ({children, className, onClick, type, variant, dataCy}: IBtn) => {
   if (variant === BtnVariant.GRAY) {
     return (
       <button type={type ?? "button"} onClick={onClick}

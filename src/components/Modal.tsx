@@ -20,7 +20,12 @@ interface IModal {
   okBtnVariant?: BtnVariant,
   customModal?: any;
   onClickOverlay?: any,
-  footerClassName?: string
+  footerClassName?: string,
+  buttonCancelCy: string,
+  buttonOkeCy: string,
+  dataCy: string,
+  closeIconCy: string,
+  disabledOkeBtn?: boolean
 }
 
 interface IModalSec {
@@ -28,32 +33,45 @@ interface IModalSec {
 }
 
 export const Modal = ({
-  body,
-  cancelClassName,
-  titleClassName,
-  cancelTitle,
-  onCancel,
-  okTitle,
-  title,
-  okClassName,
-  show,
-  onOke,
-  cancelBtnVariant,
-  okBtnVariant,
-  customModal,
-  onClickOverlay,
-  footerClassName
-}: IModal) => {
+                        body,
+                        cancelClassName,
+                        titleClassName,
+                        cancelTitle,
+                        dataCy,
+                        closeIconCy,
+                        onCancel,
+                        okTitle,
+                        title,
+                        okClassName,
+                        show,
+                        onOke,
+                        cancelBtnVariant,
+                        okBtnVariant,
+                        customModal,
+                        onClickOverlay,
+                        footerClassName,
+                        buttonCancelCy,
+                        buttonOkeCy,
+                        disabledOkeBtn,
+                      }: IModal) => {
 
   const FooterQuestion = () => {
     return (
       <div className={`p-3 gap-3 flex items-center px-20 justify-between w-full ${footerClassName}`}>
         <Button onClick={onCancel}
+                dataCy={buttonCancelCy}
           // variant={"red"}
-          variant={cancelBtnVariant ?? BtnVariant.GRAY}
-          className={`w-1/2 capitalize  ${cancelClassName}`}>{cancelTitle ?? "Cancel"}</Button>
-        <Button onClick={onOke} type={"submit"} variant={okBtnVariant}
-          className={`w-1/2 capitalize ${okClassName}`}>{okTitle ?? "Oke"}</Button>
+                variant={cancelBtnVariant ?? BtnVariant.GRAY}
+                className={`w-1/2 capitalize  ${cancelClassName}`}>{cancelTitle ?? "Cancel"}</Button>
+
+        {
+          disabledOkeBtn ?
+            // TODO : disble btn
+            <Button dataCy={buttonOkeCy} type={"submit"} variant={okBtnVariant}
+                    className={`w-1/2 capitalize   ${okClassName}  bg-black}`}>{okTitle ?? "Oke"}</Button> :
+            <Button dataCy={buttonOkeCy} onClick={onOke} type={"submit"} variant={okBtnVariant}
+                    className={`w-1/2 capitalize  ${okClassName} }`}>{okTitle ?? "Oke"}</Button>
+        }
       </div>
     )
   }
@@ -61,9 +79,9 @@ export const Modal = ({
   const TitleCard = ({ titleCard }: IModalSec) => {
     return (
       <div className={`p-3 border-b ${titleClassName} flex w-full justify-between items-center`}>
-        <p className='text-xl font-semibold'>{titleCard}</p>
-        <button onClick={onCancel}>
-          <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_CLOSE)} />
+        <p data-cy="modal-add-title" className='text-xl font-semibold'>{titleCard}</p>
+        <button onClick={onCancel} data-cy={closeIconCy}>
+          <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_CLOSE)}/>
         </button>
       </div>
     )
@@ -73,6 +91,7 @@ export const Modal = ({
     <>
 
       <div
+        data-cy={dataCy}
         onClick={onClickOverlay}
         className={`w-screen h-screen top-0 left-0 bg-black/30 flex items-center justify-center fixed duration-500 ${show ? 'opacity-100 z-[10000] ' : 'opacity-0 z-[-10000] '} `}>
         {customModal ?
