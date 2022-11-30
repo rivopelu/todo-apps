@@ -1,0 +1,18 @@
+export const ASSETS_CONSTANTS = {
+  EMPTY_STATE: "activity-empty-state.svg",
+  TODO_EMPTY_STATE: "todo_empty_state.svg",
+  IC_TRASH: "ic_trash.svg",
+  IC_WARNING_DELETE: "ic_warning_delete.svg",
+  IC_INFO: "ic_info.svg",
+  IC_BACK_BTN: "ic_todo-back-button.svg",
+  IC_PENCIL: "ic_pencil.svg",
+  IC_ARROW_SORT : "ic_arrow_sort.svg",
+  IC_TODO_EDIT : "todo_item_edit.svg",
+  IC_CLOSE : "ic_close.svg",
+  IC_SORT_LATEST : "ic_sort_latest.svg",
+  IC_SORT_OLDEST : "ic_sort_oldest.svg",
+  IC_SORT_AZ : "ic_sort_az.svg",
+  IC_SORT_ZA : "ic_sort_za.svg",
+  IC_SORT_UNFINISHED : "ic_sort_unfinished.svg",
+  IC_SORT_CHECKLIST : "ic_checklist.svg",
+}

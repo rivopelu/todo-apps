@@ -1,0 +1,46 @@
+.swal-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .swal-button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(126, 34, 206);
+
+    &:hover {
+
+      background-color: rgb(106, 25, 176);
+    }
+  }
+
+  .swal-button__loader {
+    display: none;
+  }
+
+
+}
+
+.swal-modal {
+  .swal-icon--custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swal-footer {
+    display: flex;
+
+    button {
+      color: white;
+    }
+
+    .swal-button--cancel {
+      background-color: rgb(255, 0, 162);
+    }
+  }
+}
