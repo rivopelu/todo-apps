@@ -60,13 +60,11 @@ export const Modal = ({
       <div className={`p-3 gap-3 flex items-center px-20 justify-between w-full ${footerClassName}`}>
         <Button onClick={onCancel}
                 dataCy={buttonCancelCy}
-          // variant={"red"}
                 variant={cancelBtnVariant ?? BtnVariant.GRAY}
                 className={`w-1/2 capitalize  ${cancelClassName}`}>{cancelTitle ?? "Cancel"}</Button>
 
         {
           disabledOkeBtn ?
-            // TODO : disble btn
             <Button dataCy={buttonOkeCy} type={"submit"} variant={okBtnVariant}
                     className={`w-1/2 capitalize   ${okClassName}  bg-black}`}>{okTitle ?? "Oke"}</Button> :
             <Button dataCy={buttonOkeCy} onClick={onOke} type={"submit"} variant={okBtnVariant}
