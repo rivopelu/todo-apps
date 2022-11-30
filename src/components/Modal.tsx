@@ -65,9 +65,9 @@ export const Modal = ({
 
         {
           disabledOkeBtn ?
-            <Button dataCy={buttonOkeCy} type={"submit"} variant={okBtnVariant}
+            <Button disable={true} dataCy={buttonOkeCy} type={"submit"} variant={okBtnVariant}
                     className={`w-1/2 capitalize   ${okClassName}  bg-black}`}>{okTitle ?? "Oke"}</Button> :
-            <Button dataCy={buttonOkeCy} onClick={onOke} type={"submit"} variant={okBtnVariant}
+            <Button disable={false} dataCy={buttonOkeCy} onClick={onOke} type={"submit"} variant={okBtnVariant}
                     className={`w-1/2 capitalize  ${okClassName} }`}>{okTitle ?? "Oke"}</Button>
         }
       </div>

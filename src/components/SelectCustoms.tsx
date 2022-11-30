@@ -82,7 +82,6 @@ export const SelectCustoms = ({ setValuePriority, setValuePrioritySubmit, valueP
   return (
     <div data-cy={"modal-add-priority-dropdown"}>
       <Select
-        data-cy={"modal-add-priority-dropdown"}
         styles={stylesConfig}
         onMenuClose={() => setMenuIsOpen(false)}
         onMenuOpen={() => setMenuIsOpen(true)}
