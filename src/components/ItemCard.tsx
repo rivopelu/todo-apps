@@ -13,8 +13,8 @@ interface IItemCard {
 
 export const ItemCard = ({ title, dataCy, date, onClickDelete, onClick }: IItemCard) => {
   return (
-    <div className='relative'>
-      <div data-cy={dataCy} onClick={onClick} className={"bg-white w-[235px] h-[234px] rounded-md shadow-md p-[22px] flex flex-col justify-between"}>
+    <div className='relative' data-cy={dataCy}>
+      <div  onClick={onClick} className={"bg-white w-[235px] h-[234px] rounded-md shadow-md p-[22px] flex flex-col justify-between"}>
         <h1 data-cy="activity-item-title" className={"text-lg font-bold capitalize"}>{title}</h1>
         <div className={"flex w-full items-center justify-between"}>
           <span data-cy="activity-item-date" className={"text-sm text-textGray"}>{date}</span>

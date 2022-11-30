@@ -105,13 +105,13 @@ export const HomePage = () => {
         buttonOkeCy={""}
         buttonCancelCy={""}
         title={""}
-        dataCy={"alert-activity"}
+        dataCy={"modal-information"}
         show={isAlertSuccessDelete}
         customModal={customModalSuccessDelete}
         onClickOverlay={onClickOverlay}/>
       <Modal
         dataCy={"delete-activity"}
-        closeIconCy={""}
+        closeIconCy={"modal-delete"}
         buttonOkeCy={"modal-delete-confirm-button"}
         buttonCancelCy={"modal-delete-cancel-button"}
         show={openModalDelete}
@@ -143,7 +143,7 @@ export const HomePage = () => {
                 {
                   dataList.map((item, i) => (
                       <div key={i} className={"w-[25%] pt-5"}>
-                        <ItemCard dataCy={`activity-item-${i}`} onClick={() => navigate("/detail/" + item.id)}
+                        <ItemCard dataCy={`activity-item`} onClick={() => navigate("/detail/" + item.id)}
                                   onClickDelete={() => onDeleteClick(item.id, item.title)} title={item.title}
                                   date={toDateString(item.created_at ?? "")}/>
                       </div>

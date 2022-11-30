@@ -371,7 +371,7 @@ export const DetailsPage = () => {
             </div>
             {
               !onEditTitle ?
-                <h1 data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}>{value}</h1> :
+                <div data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}>{value}</div> :
                 <form>
                   <input
                     data-cy="todo-title"
