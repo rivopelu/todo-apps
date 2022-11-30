@@ -429,7 +429,7 @@ export const DetailsPage = () => {
             list.map((item, i) => (
               <div key={i}>
                 <ItemTodo
-                  dataCy={"todo-item"}
+                  dataCy={"todo-item-" + i.toString()}
                   data={item}
                   onChangeChecklist={() => onChangeChecklist(item)}
                   onClickEdit={() => {
