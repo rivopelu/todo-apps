@@ -107,35 +107,35 @@ export const DetailsPage = () => {
     {
       title: "Terbaru",
       icon: ASSETS_CONSTANTS.IC_SORT_LATEST,
-      id: "sort-selection",
+      id: "sort-selection-",
       onClick: () => sortLatest()
     },
     {
       title: "Terlama",
       icon: ASSETS_CONSTANTS.IC_SORT_OLDEST,
-      id: "sort-selection",
+      id: "sort-selection-",
       onClick: () => setOldest()
     },
     {
       title: "A-Z", icon: ASSETS_CONSTANTS.IC_SORT_AZ,
-      id: "sort-selection", onClick: () => {
+      id: "sort-selection-", onClick: () => {
         setList(sortAz())
         setIsActiveSortId("sort-az")
       }
     },
     {
       title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA,
-      id: "sort-selection", onClick: () => {
-        setIsActiveSortId("sort-selection")
+      id: "sort-selection-", onClick: () => {
+        setIsActiveSortId("sort-selection-")
         setList(sortAz().reverse())
       }
     },
     {
       title: "Belum Selesai",
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
-      id: "sort-selection",
+      id: "sort-selection-",
       onClick: () => {
-        setIsActiveSortId("sort-selection")
+        setIsActiveSortId("sort-selection-")
         setList(sortUnFinished().reverse())
       }
     },
@@ -314,7 +314,7 @@ export const DetailsPage = () => {
       </button>
       {
         isActiveMenuSort &&
-				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"Sort"}>
+				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"sort-selection"}>
           {
             dataMenuSort.map((data) => (
               <div
