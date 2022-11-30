@@ -107,35 +107,35 @@ export const DetailsPage = () => {
     {
       title: "Terbaru",
       icon: ASSETS_CONSTANTS.IC_SORT_LATEST,
-      id: "--0",
+      id: "sort-selection",
       onClick: () => sortLatest()
     },
     {
       title: "Terlama",
       icon: ASSETS_CONSTANTS.IC_SORT_OLDEST,
-      id: "--1",
+      id: "sort-selection",
       onClick: () => setOldest()
     },
     {
       title: "A-Z", icon: ASSETS_CONSTANTS.IC_SORT_AZ,
-      id: "--2", onClick: () => {
+      id: "sort-selection", onClick: () => {
         setList(sortAz())
         setIsActiveSortId("sort-az")
       }
     },
     {
       title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA,
-      id: "--3", onClick: () => {
-        setIsActiveSortId("--")
+      id: "sort-selection", onClick: () => {
+        setIsActiveSortId("sort-selection")
         setList(sortAz().reverse())
       }
     },
     {
       title: "Belum Selesai",
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
-      id: "--4",
+      id: "sort-selection",
       onClick: () => {
-        setIsActiveSortId("--")
+        setIsActiveSortId("sort-selection")
         setList(sortUnFinished().reverse())
       }
     },
@@ -174,7 +174,6 @@ export const DetailsPage = () => {
 
   const onUpdateTitle = async () => {
     setOnEditTitle(false)
-    console.log("update ----------------------------")
     const data = {
       title: value
     }
@@ -314,7 +313,7 @@ export const DetailsPage = () => {
       </button>
       {
         isActiveMenuSort &&
-				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"sort-selection"}>
+				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"sort"}>
           {
             dataMenuSort.map((data) => (
               <button
