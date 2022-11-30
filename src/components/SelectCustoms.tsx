@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from "react-select/base";
-import {Badge, BadgeVariant, BadgeWithTitle} from "./Badge";
-import {StylesConfig} from "react-select";
+import { Badge, BadgeVariant, BadgeWithTitle } from "./Badge";
+import { StylesConfig } from "react-select";
 
 
 export interface IValueSelect {
@@ -13,17 +13,19 @@ export interface IValueSelect {
 interface IPropsValueSelect {
   setValuePriority?: any,
   valuePriority?: IValueSelect,
+  setValuePriorityEdit?: any,
+  setValuePrioritySubmit?: any,
 }
 
 
-export const SelectCustoms = ({setValuePriority, valuePriority}: IPropsValueSelect) => {
+export const SelectCustoms = ({ setValuePriority, setValuePrioritySubmit, valuePriority, setValuePriorityEdit }: IPropsValueSelect) => {
 
   const optionsListPriority: IValueSelect[] = [
-    {label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH}/>, value: "very-high"},
-    {label: <BadgeWithTitle variant={BadgeVariant.HIGH}/>, value: "high"},
-    {label: <BadgeWithTitle variant={BadgeVariant.MEDIUM}/>, value: "normal"},
-    {label: <BadgeWithTitle variant={BadgeVariant.LOW}/>, value: "low"},
-    {label: <BadgeWithTitle variant={BadgeVariant.VERY_LOW}/>, value: "very-low"},
+    { label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH} />, value: "very-high" },
+    { label: <BadgeWithTitle variant={BadgeVariant.HIGH} />, value: "high" },
+    { label: <BadgeWithTitle variant={BadgeVariant.MEDIUM} />, value: "normal" },
+    { label: <BadgeWithTitle variant={BadgeVariant.LOW} />, value: "low" },
+    { label: <BadgeWithTitle variant={BadgeVariant.VERY_LOW} />, value: "very-low" },
   ]
 
 
@@ -31,23 +33,34 @@ export const SelectCustoms = ({setValuePriority, valuePriority}: IPropsValueSele
   const [inputSelectKeyboard, setInputSelectKeyboard] = useState<string>('');
   const [newData, setNewData] = useState<IValueSelect>({
     value: 'very-high',
-    label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH}/>,
+    label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH} />,
   });
 
 
   //TODO : ININITE LOOPING DSNI
 
-  // useEffect(() => {
-  //     setValuePriority(newData)
-  // }, [newData])
+  useEffect(() => {
+    setValuePriorityEdit(newData.value)
+    console.log("ini value prioriry", newData);
+    // setValuePriority(newData)
+    setValuePrioritySubmit(newData.value)
+
+  }, [newData])
 
   useEffect(() => {
     if (valuePriority?.value) {
+      console.log("masuk sini 123");
+      console.log(valuePriority.value);
       setNewData(valuePriority)
     } else {
+      console.log("masuk sini ---------123");
       setNewData({
         value: 'very-high',
-        label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH}/>,
+        label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH} />,
+      })
+      setValuePriority({
+        value: 'very-high',
+        label: <BadgeWithTitle variant={BadgeVariant.VERY_HIGH} />,
       })
     }
   }, [valuePriority])

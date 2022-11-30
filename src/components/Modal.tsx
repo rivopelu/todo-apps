@@ -1,9 +1,9 @@
 import React from 'react';
-import {Card} from "./Card";
-import {BtnVariant, Button} from "./Button";
+import { Card } from "./Card";
+import { BtnVariant, Button } from "./Button";
 import SVG from "react-inlinesvg";
-import {ToMediaUrl} from "../helper/utilsHelper";
-import {ASSETS_CONSTANTS} from "../constants/assetsConstants";
+import { ToMediaUrl } from "../helper/utilsHelper";
+import { ASSETS_CONSTANTS } from "../constants/assetsConstants";
 
 interface IModal {
   onOke?: any,
@@ -28,42 +28,42 @@ interface IModalSec {
 }
 
 export const Modal = ({
-                        body,
-                        cancelClassName,
-                        titleClassName,
-                        cancelTitle,
-                        onCancel,
-                        okTitle,
-                        title,
-                        okClassName,
-                        show,
-                        onOke,
-                        cancelBtnVariant,
-                        okBtnVariant,
-                        customModal,
-                        onClickOverlay,
-                        footerClassName
-                      }: IModal) => {
+  body,
+  cancelClassName,
+  titleClassName,
+  cancelTitle,
+  onCancel,
+  okTitle,
+  title,
+  okClassName,
+  show,
+  onOke,
+  cancelBtnVariant,
+  okBtnVariant,
+  customModal,
+  onClickOverlay,
+  footerClassName
+}: IModal) => {
 
   const FooterQuestion = () => {
     return (
       <div className={`p-3 gap-3 flex items-center px-20 justify-between w-full ${footerClassName}`}>
         <Button onClick={onCancel}
           // variant={"red"}
-                variant={cancelBtnVariant ?? BtnVariant.GRAY}
-                className={`w-1/2 capitalize  ${cancelClassName}`}>{cancelTitle ?? "Cancel"}</Button>
+          variant={cancelBtnVariant ?? BtnVariant.GRAY}
+          className={`w-1/2 capitalize  ${cancelClassName}`}>{cancelTitle ?? "Cancel"}</Button>
         <Button onClick={onOke} type={"submit"} variant={okBtnVariant}
-                className={`w-1/2 capitalize ${okClassName}`}>{okTitle ?? "Oke"}</Button>
+          className={`w-1/2 capitalize ${okClassName}`}>{okTitle ?? "Oke"}</Button>
       </div>
     )
   }
 
-  const TitleCard = ({titleCard}: IModalSec) => {
+  const TitleCard = ({ titleCard }: IModalSec) => {
     return (
       <div className={`p-3 border-b ${titleClassName} flex w-full justify-between items-center`}>
-        <p className='font-bold text-xl font-semibold'>{titleCard}</p>
+        <p className='text-xl font-semibold'>{titleCard}</p>
         <button onClick={onCancel}>
-          <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_CLOSE)}/>
+          <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_CLOSE)} />
         </button>
       </div>
     )
@@ -81,7 +81,7 @@ export const Modal = ({
             className={`min-w-[500px] min-h-[] max-w-[1000px] duration-500 ${show ? 'translate-y-0 scale-100' : 'translate-y-[200vh] scale-0 '}`}>
             {
               title &&
-							<TitleCard titleCard={title}/>
+              <TitleCard titleCard={title} />
             }
             <Card
               className={`w-full p-3 min-h-[250px]  flex flex-col  max-h-[80vh] items-center justify-center `}>
@@ -91,7 +91,7 @@ export const Modal = ({
               }
             </Card>
 
-            <FooterQuestion/>
+            <FooterQuestion />
           </Card>
         }
       </div>

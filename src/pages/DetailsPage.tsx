@@ -60,6 +60,8 @@ export const DetailsPage = () => {
   const [itemsId, setItemsId] = useState<number>(0)
   const [isActiveItems, setIsActiveItems] = useState<number>(1)
   const [isActiveMenuSort, setIsActiveMenuSort] = useState<boolean>(false)
+  const [valuePriorityEdit, setValuePriorityEdit] = useState<string>("");
+  const [valuePrioritySubmit, setValuePrioritySubmit] = useState<string>("")
   const [isActiveSortId, setIsActiveSortId] = useState<string>("sort-latest")
   const [detailGroup, setDetailGroup] = useState<ITodoDetails>({
     todo_items: [],
@@ -240,7 +242,7 @@ export const DetailsPage = () => {
       if (isEdit) {
         const data: IDataEditTodo = {
           title: valueTitle,
-          priority: valuePriority.value ?? "",
+          priority: valuePriorityEdit ?? "",
           is_active: isActiveItems,
           _comment: "-"
         }
@@ -249,7 +251,7 @@ export const DetailsPage = () => {
       } else {
         const data: IDataNewTodo = {
           _comment: "_",
-          priority: valuePriority.value ?? "",
+          priority: valuePrioritySubmit ?? "",
           activity_group_id: parseInt(params.id ?? "10"),
           title: valueTitle
         }
@@ -288,7 +290,7 @@ export const DetailsPage = () => {
       <div>
         <label className={"text-xs font-bold text-black"} htmlFor={"input_item"}>PRIORITY</label>
         <div className={"w-[205px] mt-1"}>
-          <SelectCustoms valuePriority={valuePriority} setValuePriority={setValuePriority} />
+          <SelectCustoms setValuePrioritySubmit={setValuePrioritySubmit} setValuePriorityEdit={setValuePriorityEdit} valuePriority={valuePriority} setValuePriority={setValuePriority} />
         </div>
       </div>
     </div>
