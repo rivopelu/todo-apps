@@ -87,7 +87,7 @@ export const HomePage = () => {
 
   const customModalSuccessDelete =
     <>
-      <Card className={"py-[20px] px-[30px] w-[490px] flex gap-2 items-center "}>
+      <Card dataCy={"modal-information"} className={"py-[20px] px-[30px] w-[490px] flex gap-2 items-center "}>
         <SVG data-cy={"modal-information-icon"} src={ToMediaUrl(ASSETS_CONSTANTS.IC_INFO)}/>
         <span data-cy="modal-information-title"
               className={"text-sm font-bold text-[#111111]"}>Activity berhasil dihapus</span>
@@ -105,7 +105,7 @@ export const HomePage = () => {
         buttonOkeCy={""}
         buttonCancelCy={""}
         title={""}
-        dataCy={"modal-information"}
+        dataCy={""}
         show={isAlertSuccessDelete}
         customModal={customModalSuccessDelete}
         onClickOverlay={onClickOverlay}/>
