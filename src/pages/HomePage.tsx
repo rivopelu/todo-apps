@@ -110,8 +110,8 @@ export const HomePage = () => {
         customModal={customModalSuccessDelete}
         onClickOverlay={onClickOverlay}/>
       <Modal
-        dataCy={"delete-activity"}
-        closeIconCy={"modal-delete"}
+        dataCy={"modal-delete"}
+        closeIconCy={""}
         buttonOkeCy={"modal-delete-confirm-button"}
         buttonCancelCy={"modal-delete-cancel-button"}
         show={openModalDelete}

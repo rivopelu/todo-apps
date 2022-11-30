@@ -374,7 +374,6 @@ export const DetailsPage = () => {
                 <div data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}>{value}</div> :
                 <form>
                   <input
-                    data-cy="todo-title"
                     autoFocus={true}
                     type="text"
                     onKeyDown={(e: any) => {
@@ -408,7 +407,7 @@ export const DetailsPage = () => {
             list.map((item, i) => (
               <div key={i}>
                 <ItemTodo
-                  dataCy={"todo-item-" + i.toString()}
+                  dataCy={"todo-item"}
                   data={item}
                   onChangeChecklist={() => onChangeChecklist(item)}
                   onClickEdit={() => {
