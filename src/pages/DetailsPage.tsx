@@ -105,13 +105,13 @@ export const DetailsPage = () => {
     {
       title: "Terbaru",
       icon: ASSETS_CONSTANTS.IC_SORT_LATEST,
-      id: "sort-latest",
+      id: "sort-selection",
       onClick: () => sortLatest()
     },
     {
       title: "Terlama",
       icon: ASSETS_CONSTANTS.IC_SORT_OLDEST,
-      id: "sort-oldest",
+      id: "sort-selection",
       onClick: () => setOldest()
     },
     {
@@ -122,7 +122,7 @@ export const DetailsPage = () => {
     },
     {
       title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA, id: "sort-za", onClick: () => {
-        setIsActiveSortId("sort-za")
+        setIsActiveSortId("sort-selection")
         setList(sortAz().reverse())
       }
     },
@@ -131,7 +131,7 @@ export const DetailsPage = () => {
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
       id: "sort-unfinished",
       onClick: () => {
-        setIsActiveSortId("sort-unfinished")
+        setIsActiveSortId("sort-selection")
         setList(sortUnFinished().reverse())
       }
     },
@@ -338,7 +338,7 @@ export const DetailsPage = () => {
     <section className={"h-full "}>
       <Modal
         closeIconCy={""}
-        dataCy={'delete-list-item'}
+        dataCy={'modal-delete'}
         buttonCancelCy={"modal-delete-cancel-button"}
         buttonOkeCy={"modal-delete-confirm-button"}
         show={openModalDelete}
