@@ -352,7 +352,7 @@ export const DetailsPage = () => {
         closeIconCy={"modal-add-close-button"}
         buttonCancelCy={""}
         buttonOkeCy={"modal-add-save-button"}
-        dataCy={"tambah-list-item"}
+        dataCy={"modal-add"}
         title={"Tambah List Item"}
         titleClassName={"px-10 py-4"}
         footerClassName={"px-10 flex-row-reverse border-t"}
@@ -430,7 +430,7 @@ export const DetailsPage = () => {
         {
           list.length === 0 && !MainReducers.loading &&
           <div className={"h-full items-center w-full justify-center  flex mt-28"}>
-            <img src={ToMediaUrl(ASSETS_CONSTANTS.TODO_EMPTY_STATE)} alt="empty state" />
+            <img data-cy="todo-empty-state" src={ToMediaUrl(ASSETS_CONSTANTS.TODO_EMPTY_STATE)} alt="empty state"/>
           </div>
         }
       </MainContainer>
