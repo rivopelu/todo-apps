@@ -317,7 +317,7 @@ export const DetailsPage = () => {
 				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"sort-selection"}>
           {
             dataMenuSort.map((data) => (
-              <div
+              <button
                 onClick={data.onClick}
                 key={data.id}
                 data-cy={data.id}
@@ -333,7 +333,7 @@ export const DetailsPage = () => {
                   data.id === isActiveSortId &&
                   <SVG src={ToMediaUrl(ASSETS_CONSTANTS.IC_SORT_CHECKLIST)} />
                 }
-              </div>
+              </button>
             ))
           }
         </div>
@@ -429,7 +429,7 @@ export const DetailsPage = () => {
             list.map((item, i) => (
               <div key={i}>
                 <ItemTodo
-                  dataCy={"todo-item"}
+                  dataCy={"todo-item-" + i.toString()}
                   data={item}
                   onChangeChecklist={() => onChangeChecklist(item)}
                   onClickEdit={() => {
