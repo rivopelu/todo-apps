@@ -107,23 +107,25 @@ export const DetailsPage = () => {
     {
       title: "Terbaru",
       icon: ASSETS_CONSTANTS.IC_SORT_LATEST,
-      id: "sort-selection",
+      id: "sort-selection-0",
       onClick: () => sortLatest()
     },
     {
       title: "Terlama",
       icon: ASSETS_CONSTANTS.IC_SORT_OLDEST,
-      id: "sort-selection",
+      id: "sort-selection-1",
       onClick: () => setOldest()
     },
     {
-      title: "A-Z", icon: ASSETS_CONSTANTS.IC_SORT_AZ, id: "sort-az", onClick: () => {
+      title: "A-Z", icon: ASSETS_CONSTANTS.IC_SORT_AZ,
+      id: "sort-selection-2", onClick: () => {
         setList(sortAz())
         setIsActiveSortId("sort-az")
       }
     },
     {
-      title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA, id: "sort-za", onClick: () => {
+      title: "Z-A", icon: ASSETS_CONSTANTS.IC_SORT_ZA,
+      id: "sort-selection-3", onClick: () => {
         setIsActiveSortId("sort-selection")
         setList(sortAz().reverse())
       }
@@ -131,7 +133,7 @@ export const DetailsPage = () => {
     {
       title: "Belum Selesai",
       icon: ASSETS_CONSTANTS.IC_SORT_UNFINISHED,
-      id: "sort-selection",
+      id: "sort-selection-4",
       onClick: () => {
         setIsActiveSortId("sort-selection")
         setList(sortUnFinished().reverse())
