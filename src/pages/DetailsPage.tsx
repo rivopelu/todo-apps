@@ -317,12 +317,13 @@ export const DetailsPage = () => {
           {
             dataMenuSort.map((data, i) => (
               <button
+                data-cy={"sort-selection"}
                 onClick={data.onClick}
                 key={i}
                 className={"py-[14px] w-full px-[22px] flex border cursor-pointer hover:bg-slate-100 duration-75 justify-between"}>
 
                 <div
-                  data-cy={"sort-selection"}
+
                   className={"flex items-center gap-3"}>
                   <SVG src={ToMediaUrl(data.icon)}/>
                   <span>{data.title}</span>
