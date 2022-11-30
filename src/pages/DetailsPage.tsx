@@ -315,17 +315,16 @@ export const DetailsPage = () => {
         isActiveMenuSort &&
 				<div className={"absolute bg-white mt-3 w-[235px] shadow-md rounded-lg"} data-cy={"sort"}>
           {
-            dataMenuSort.map((data) => (
+            dataMenuSort.map((data, i) => (
               <button
                 onClick={data.onClick}
-                key={data.id}
-                data-cy={data.id}
-                className={"py-[14px] px-[22px] flex border cursor-pointer hover:bg-slate-100 duration-75 justify-between"}>
+                key={i}
+                className={"py-[14px] w-full px-[22px] flex border cursor-pointer hover:bg-slate-100 duration-75 justify-between"}>
 
                 <div
+                  data-cy={data.id}
                   className={"flex items-center gap-3"}>
-
-                  <SVG src={ToMediaUrl(data.icon)} />
+                  <SVG src={ToMediaUrl(data.icon)}/>
                   <span>{data.title}</span>
                 </div>
                 {
