@@ -371,7 +371,7 @@ export const DetailsPage = () => {
             </div>
             {
               !onEditTitle ?
-                <div data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}>{value}</div> :
+                <div data-cy="todo-title" onClick={clickEdit} className={"text-3xl font-bold "}><p>{value}</p></div> :
                 <form>
                   <input
                     autoFocus={true}

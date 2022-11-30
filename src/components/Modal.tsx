@@ -87,31 +87,34 @@ export const Modal = ({
 
   return (
     <>
+      {
+        show &&
 
-      <div
-        data-cy={dataCy}
-        onClick={onClickOverlay}
-        className={`w-screen h-screen top-0 left-0 bg-black/30 flex items-center justify-center fixed duration-500 ${show ? 'opacity-100 z-[10000] ' : 'opacity-0 z-[-10000] '} `}>
-        {customModal ?
-          customModal :
-          <Card
-            className={`min-w-[500px] min-h-[] max-w-[1000px] duration-500 ${show ? 'translate-y-0 scale-100' : 'translate-y-[200vh] scale-0 '}`}>
-            {
-              title &&
-              <TitleCard titleCard={title} />
-            }
+				<div
+					data-cy={dataCy}
+					onClick={onClickOverlay}
+					className={`w-screen h-screen top-0 left-0 bg-black/30 flex items-center justify-center fixed duration-500 ${show ? 'opacity-100 z-[10000] ' : 'opacity-0 z-[-10000] '} `}>
+          {customModal ?
+            customModal :
             <Card
-              className={`w-full p-3 min-h-[250px]  flex flex-col  max-h-[80vh] items-center justify-center `}>
+              className={`min-w-[500px] min-h-[] max-w-[1000px] duration-500 ${show ? 'translate-y-0 scale-100' : 'translate-y-[200vh] scale-0 '}`}>
               {
-                show &&
-                body
+                title &&
+								<TitleCard titleCard={title} />
               }
-            </Card>
+              <Card
+                className={`w-full p-3 min-h-[250px]  flex flex-col  max-h-[80vh] items-center justify-center `}>
+                {
+                  show &&
+                  body
+                }
+              </Card>
 
-            <FooterQuestion />
-          </Card>
-        }
-      </div>
+              <FooterQuestion/>
+            </Card>
+          }
+				</div>
+      }
     </>
 
   )
